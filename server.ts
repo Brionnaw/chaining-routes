@@ -1,21 +1,17 @@
   import express = require('express');
   let app = express();
-  app.route("/")
-  .get(function(req, res){
-    res.send('im a GET');
-  })
-  .post(function(req, res)  {
-    res.send('hello');
-  })
-  .put(function(req, res) {
-    res.send('I am a PUT');
-  })
-  .delete(function(req, res)  {
-    res.send('i am a DELETE');
-  });
 
-  import movies = require("./movies"); // tell the server to read movies.ts file
-  app.use("/movies", movies);
+
+// if statements to tell users what to do in routes:
+  app.get('/users/:id', function(req, res, next) {
+  if (req.params.id == 0) next('route');
+  else next();
+  }, function (req, res) {
+    res.send ('regular user');
+  });
+  app.get('/users/:id', function(req, res) {
+    res.send('admin');
+  });
 
 let server = app.listen(3000, function () {
   let port = server.address().port;
