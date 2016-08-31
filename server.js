@@ -14,6 +14,8 @@ app.route("/")
     .delete(function (req, res) {
     res.send('i am a DELETE');
 });
+var movies = require("./movies");
+app.use("/movies", movies);
 var server = app.listen(3000, function () {
     var port = server.address().port;
     console.log("Server is running on PORT:" + port);

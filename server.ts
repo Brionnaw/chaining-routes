@@ -14,6 +14,9 @@
     res.send('i am a DELETE');
   });
 
+  import movies = require("./movies"); // tell the server to read movies.ts file
+  app.use("/movies", movies);
+
 let server = app.listen(3000, function () {
   let port = server.address().port;
   console.log(`Server is running on PORT:${port}`);
