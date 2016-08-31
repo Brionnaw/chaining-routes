@@ -1,6 +1,8 @@
 "use strict";
 var express = require('express');
 var app = express();
+var movies = require('./movies');
+app.use('/movies', movies);
 app.get('/users/:id', function (req, res, next) {
     if (req.params.id == 0)
         next('route');

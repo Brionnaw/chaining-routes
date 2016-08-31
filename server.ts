@@ -1,6 +1,7 @@
   import express = require('express');
   let app = express();
-
+  import movies = require('./movies');
+  app.use('/movies', movies);
 
 // if statements to tell users what to do in routes:
   app.get('/users/:id', function(req, res, next) {
